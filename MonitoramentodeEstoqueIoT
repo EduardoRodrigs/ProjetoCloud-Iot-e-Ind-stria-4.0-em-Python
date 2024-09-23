@@ -1,0 +1,29 @@
+import random
+
+class EstoqueMonitor:
+    def __init__(self):
+        self.estoque = {}
+
+    def adicionar_produto(self, produto, quantidade):
+        self.estoque[produto] = quantidade
+
+    def atualizar_estoque(self, produto, quantidade):
+        if produto in self.estoque:
+            self.estoque[produto] += quantidade
+        else:
+            self.estoque[produto] = quantidade
+
+    def monitorar_estoque(self):
+        for produto, quantidade in self.estoque.items():
+            print(f"Produto: {produto}, Quantidade em estoque: {quantidade}")
+
+# Simulação de monitoramento de estoque
+monitor = EstoqueMonitor()
+monitor.adicionar_produto("Coca Cola", 100)
+monitor.adicionar_produto("Fanta", 50)
+
+# Atualização aleatória do estoque
+for _ in range(5):
+    monitor.atualizar_estoque("Coca Cola", random.randint(-10, 10))
+    monitor.atualizar_estoque("Fanta", random.randint(-5, 5))
+    monitor.monitorar_estoque()
