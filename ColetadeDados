@@ -1,0 +1,16 @@
+import time
+
+class Sensor:
+    def __init__(self, nome):
+        self.nome = nome
+
+    def ler_dados(self):
+        return random.uniform(20.0, 30.0)
+
+# Simulação de coleta de dados de sensores
+sensor_temperatura = Sensor("Sensor de Temperatura")
+
+for _ in range(5):
+    dados = sensor_temperatura.ler_dados()
+    print(f"{sensor_temperatura.nome}: {dados:.2f}°C")
+    time.sleep(1)
