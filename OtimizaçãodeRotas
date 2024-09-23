@@ -1,0 +1,33 @@
+import heapq
+
+def dijkstra(grafo, inicio):
+    distancias = {vertice: float('infinity') for vertice in grafo}
+    distancias[inicio] = 0
+    prioridade = [(0, inicio)]
+
+    while prioridade:
+        distancia_atual, vertice_atual = heapq.heappop(prioridade)
+
+        if distancia_atual > distancias[vertice_atual]:
+            continue
+
+        for vizinho, peso in grafo[vertice_atual].items():
+            distancia = distancia_atual + peso
+
+            if distancia < distancias[vizinho]:
+                distancias[vizinho] = distancia
+                heapq.heappush(prioridade, (distancia, vizinho))
+
+    return distancias
+
+# Grafo representando as rotas de distribuição
+grafo = {
+    'A': {'B': 1, 'C': 4},
+    'B': {'A': 1, 'C': 2, 'D': 5},
+    'C': {'A': 4, 'B': 2, 'D': 1},
+    'D': {'B': 5, 'C': 1}
+}
+
+inicio = 'A'
+distancias = dijkstra(grafo, inicio)
+print(f"Distâncias a partir do ponto {inicio}: {distancias}")
