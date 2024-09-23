@@ -1,0 +1,13 @@
+import boto3
+
+def enviar_dados_para_s3(dados, bucket_name, file_name):
+    s3 = boto3.client('s3')
+    s3.put_object(Bucket=bucket_name, Key=file_name, Body=dados)
+
+# Simulação de envio de dados para o S3
+dados_para_enviar = "Dados de exemplo para armazenamento na nuvem"
+bucket_name = "meu-bucket"
+file_name = "dados.txt"
+
+enviar_dados_para_s3(dados_para_enviar, bucket_name, file_name)
+print(f"Dados enviados para o bucket {bucket_name} com o nome {file_name}")
