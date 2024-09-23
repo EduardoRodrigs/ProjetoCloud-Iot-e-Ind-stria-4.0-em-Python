@@ -1,0 +1,13 @@
+import pandas as pd
+
+dados_estoque = {
+    "Produto": ["Coca Cola", "Fanta", "Sprite"],
+    "Quantidade": [100, 50, 75]
+}
+
+df_estoque = pd.DataFrame(dados_estoque)
+print(df_estoque)
+
+# Análise simples dos dados
+media_estoque = df_estoque["Quantidade"].mean()
+print(f"Média de estoque: {media_estoque}")
